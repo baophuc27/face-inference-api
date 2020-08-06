@@ -17,7 +17,7 @@ class Detector:
     def reg_face(self, frame):
         self.face_tracker.process_lm(frame)
         _landmarks= self.face_tracker.get_face_landmarks()
-        _face_descriptions = []
+        _face_description = []
         if len(_landmarks) >0:
             _face_resize = align(frame,_landmarks)
             _data_feed = [
