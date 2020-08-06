@@ -1,0 +1,3 @@
+.vscode
+*cache*
+face_detector/pretrained/insightface.pb

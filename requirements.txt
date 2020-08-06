@@ -1,0 +1,5 @@
+
+tensorflow-cpu
+face-recognition
+opencv-python
+flask
