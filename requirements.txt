@@ -1,4 +1,5 @@
-
+numpy
+cryptography
 tensorflow-cpu
 face-recognition
 opencv-python

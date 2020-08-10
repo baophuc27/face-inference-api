@@ -55,4 +55,4 @@ def decrypt_message(encrypted_message):
     return decrypted_message
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0',port='80')
+    app.run(host='0.0.0.0',port='8002')

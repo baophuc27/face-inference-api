@@ -18,8 +18,12 @@ class Detector:
         self.face_tracker.process_lm(frame)
         _landmarks= self.face_tracker.get_face_landmarks()
         _face_description = []
-        if len(_landmarks) >0:
+        if len(_landmarks) > 0:
+            print("test")
             _face_resize = align(frame,_landmarks)
+            cv2.imwrite("face.png",_face_resize)
+            # cv2.waitKey(0)
+            # _face_resize = cv2.resize(face, configs.face_describer_tensor_shape)
             _data_feed = [
                 np.expand_dims(_face_resize, axis=0),
                 configs.face_describer_drop_out_rate,

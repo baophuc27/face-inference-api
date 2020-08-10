@@ -4,7 +4,7 @@ import cv2
 import face_recognition
 
 
-desiredLeftEye= (0.35,0.35)
+desiredLeftEye= (0.2,0.2)
 (desiredFaceHeight,desiredFaceWidth) = configs.face_describer_tensor_shape
 
 
