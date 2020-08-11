@@ -34,7 +34,6 @@ def detect():
         encrypted_message = request.values.get("img_url")
         img_url=decrypt_message(encrypted_message.encode())
         image=url_to_img(img_url)
-        print(img_url)
         embedding = detector.reg_face(image)
         data={"embedding": str(embedding)}
         return data,200

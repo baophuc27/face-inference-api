@@ -22,11 +22,6 @@ class FaceTrackServer(object):
         self.reset()
         self.cam_h, self.cam_w,_= frame.shape
 
-        # small_frame = cv2.resize(
-        #     frame, (0, 0), fx=self.down_scale_factor, fy=self.down_scale_factor
-        # )
-
-        # rgb_small_frame = small_frame[:, :, ::-1]
         _face_landmarks = face_recognition.face_landmarks(frame)
         if len(_face_landmarks) > 0:
             left_eye = _face_landmarks[0]["left_eyebrow"]
