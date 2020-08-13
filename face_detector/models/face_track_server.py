@@ -1,10 +1,11 @@
 import cv2
 import face_recognition
 import numpy as np
+from mtcnn.mtcnn import MTCNN
 
 class FaceTrackServer(object):
 
-    face_landmarks = {}
+    face_landmarks = []
     cam_h = None
     cam_w = None
     faces = []
@@ -17,23 +18,14 @@ class FaceTrackServer(object):
         self.face_relative_locations = []
         self.face_locations = []
         self.faces = []
+        self.face_landmarks = []
 
     def process_lm(self, frame):
         self.reset()
-        self.cam_h, self.cam_w,_= frame.shape
-
-        _face_landmarks = face_recognition.face_landmarks(frame)
-        if len(_face_landmarks) > 0:
-            left_eye = _face_landmarks[0]["left_eyebrow"]
-            right_eye = _face_landmarks[0]["right_eyebrow"]
-            leftEyeCenter = np.average(left_eye, axis=0).astype(int)
-            rightEyeCenter = np.average(right_eye, axis=0).astype(int)
-            (xL, yL) = leftEyeCenter
-            (xR, yR) = rightEyeCenter
-
-            self.face_landmarks["left_eye"]=(xL,yL)
-            self.face_landmarks["right_eye"]= (xR,yR)
-
+        detector = MTCNN()
+        face_info = detector.detect_faces(frame)
+        landmark = np.asarray(list(face_info[0]['keypoints'].values()))
+        self.face_landmarks.append(landmark)
         return self.face_landmarks
 
 
